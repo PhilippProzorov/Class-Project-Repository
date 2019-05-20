@@ -1,9 +1,9 @@
 package AddressBook;
 
 class Address {
-    public String street;
-    public int house;
-    public int apartment;
+    private String street;
+    private int house;
+    private int apartment;
     Address(String street, int house, int apartment) {
         this.street = street;
         this.house = house;
@@ -14,10 +14,10 @@ class Address {
             throw new IllegalArgumentException("ILLEGAL ADDRESS FORMAT");
         }
     }
-    String extractedStreet() {
+    String getStreet() {
         return this.street;
     }
-    int extractedHouse() {
+    int getHouse() {
         return this.house;
     }
     @Override
