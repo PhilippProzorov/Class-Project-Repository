@@ -91,7 +91,7 @@ class Tests {
                 addressBook.sameStreet("Оборонная"));
         assertEquals(Collections.emptyList(),
                 addressBook.sameStreet("Мориса Тореза"));
-        
+
     }
 
     @Test
@@ -105,5 +105,16 @@ class Tests {
         assertEquals(Collections.emptyList(),
                 addressBook.sameHouse("undefined", 0));
     }
-}
 
+    @Test
+    @Tag("Methods")
+    void size() {
+        AddressBook addressBook = newAddressBook();
+        addressBook.add("Рудольф Нуреев", new Address("Волчий Тупик", 38, 3));
+        assertEquals(7, addressBook.size());
+        addressBook.change("Рудольф Нуреев", new Address("Заячий переулок", 38, 3));
+        assertEquals(7, addressBook.size());
+        addressBook.remove("Рудольф Нуреев");
+        assertEquals(6, addressBook.size());
+    }
+}
