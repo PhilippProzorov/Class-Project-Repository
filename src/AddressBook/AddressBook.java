@@ -2,38 +2,31 @@ package AddressBook;
 import java.util.*;
 
 class AddressBook {
-    private Map<String, Address> inhabitantInfo =
-            new HashMap<>();
-    Map<String, Address> get() {
-        return inhabitantInfo;
-    }
-
+    private Map<String, Address> inhabitantInfo = new HashMap<>();
     void add(String inhabitant, Address address) {
-        if ((inhabitant.isEmpty()) || (inhabitantInfo.containsKey(inhabitant))) {
+        if ((inhabitant.isEmpty()) || (inhabitantInfo.containsKey(inhabitant)))
             throw new IllegalArgumentException("FAILED TO ADD. INCORRECT INPUT");
-        }
         inhabitantInfo.put(inhabitant, address);
     }
 
     public String search(String inhabitant) {
-        if (inhabitantInfo.containsKey(inhabitant)) {
-            return inhabitantInfo.get(inhabitant).toString();
-        }
-        throw new IllegalArgumentException("NO RESULT. EITHER INCORRECT INPUT OR THIS PERSON DOESN'T EXIST");
+        if (!inhabitantInfo.containsKey(inhabitant))
+            throw new IllegalArgumentException("NO RESULT. EITHER INCORRECT INPUT OR THIS PERSON DOESN'T EXIST");
+        return inhabitantInfo.get(inhabitant).toString();
+
     }
 
     void change(String inhabitant, Address address) {
-        if (inhabitantInfo.containsKey(inhabitant)) {
-            inhabitantInfo.replace(inhabitant, address);
+        if (!inhabitantInfo.containsKey(inhabitant)) {
+            throw new IllegalArgumentException("FAILED TO CHANGE. NON-EXISTENT INHABITANT ");
         }
-        else throw new IllegalArgumentException("FAILED TO CHANGE. NON-EXISTENT INHABITANT ");
+        inhabitantInfo.replace(inhabitant, address);
     }
 
     void remove(String inhabitant) {
-        if (inhabitantInfo.containsKey(inhabitant)) {
-            inhabitantInfo.remove(inhabitant);
-        }
-        else throw new IllegalArgumentException("FAILED TO REMOVE. THIS PERSON DOESN'T EXIST");
+        if (!inhabitantInfo.containsKey(inhabitant))
+            throw new IllegalArgumentException("FAILED TO REMOVE. THIS PERSON DOESN'T EXIST");
+        inhabitantInfo.remove(inhabitant);
     }
 
     List<String> sameStreet(String street) {
