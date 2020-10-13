@@ -65,7 +65,7 @@
 
     <properties>
         <jmock.version>2.5.1</jmock.version>
-        <junit.version>4.6</junit.version>
+        <junit.version>4.13.1</junit.version>
         <log4j.version>1.2.14</log4j.version>
         <org.slf4j.version>1.5.2</org.slf4j.version>
     </properties>
